@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-// Estrutura para representar os dados de um usuário
+// User Estrutura para representar os dados de um usuário
 type User struct {
 	ID       int    `json:"id"`
 	Username string `json:"username"`
@@ -20,8 +20,8 @@ var users = map[int]User{
 	2: {ID: 2, Username: "janedoe", Email: "janedoe@example.com"},
 }
 
-// Rota para buscar um usuário por ID
-func GetUserByIDHandler(w http.ResponseWriter, r *http.Request) {
+// getUserByIDHandler Rota para buscar um usuário por ID
+func getUserByIDHandler(w http.ResponseWriter, r *http.Request) {
 	// Obtém o ID do usuário a partir dos parâmetros da rota
 	idStr := r.URL.Path[len("/api/user/"):]
 	id, err := strconv.Atoi(idStr)
@@ -54,8 +54,8 @@ func GetUserByIDHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(response)
 }
 
-// Rota que retorna os dados de um usuário específico
-func GetUserHandler(w http.ResponseWriter, r *http.Request) {
+// getUserHandler Rota que retorna os dados de um usuário específico
+func getUserHandler(w http.ResponseWriter, r *http.Request) {
 	// Simulando um usuário retornado de um banco de dados ou outra fonte de dados
 	user := User{
 		ID:       1,
@@ -78,13 +78,13 @@ func GetUserHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(response)
 }
 
-// Estrutura para representar o status de saúde do serviço
+// HealthStatus Estrutura para representar o status de saúde do serviço
 type HealthStatus struct {
 	Status string `json:"status"`
 }
 
-// Rota para verificar o status de saúde do serviço
-func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
+// healthCheckHandler Rota para verificar o status de saúde do serviço
+func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	// Verifica se o serviço está em execução corretamente
 	// Você pode adicionar lógica adicional aqui, se necessário
 
